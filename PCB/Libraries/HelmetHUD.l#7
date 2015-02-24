@@ -53,7 +53,7 @@
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
@@ -1415,6 +1415,28 @@ Source: http://www.molex.com 1648045.pdf</description>
 <wire x1="-6.8028" y1="14.3286" x2="-6.8028" y2="-11.6714" width="0.127" layer="51"/>
 <wire x1="-6.8028" y1="-11.6714" x2="6.7972" y2="-11.6714" width="0.127" layer="51"/>
 </package>
+<package name="HDMI_A_SMD">
+<smd name="P$19" x="-4.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$18" x="-4" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$17" x="-3.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$16" x="-3" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$15" x="-2.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$14" x="-2" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$13" x="-1.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$12" x="-1" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$11" x="-0.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$10" x="0" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$9" x="0.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$8" x="1" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$7" x="1.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$6" x="2" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$5" x="2.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$4" x="3" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$3" x="3.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$2" x="4" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<smd name="P$1" x="4.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
+<wire x1="-8" y1="-6.57" x2="8" y2="-6.57" width="0.127" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="MT48LC4M16A2P">
@@ -1899,6 +1921,31 @@ Source: http://www.molex.com 1648045.pdf</description>
 <pin name="VDD" x="-22.86" y="35.56" length="middle"/>
 <text x="-17.78" y="41.148" size="1.778" layer="95">&gt;NAME</text>
 <text x="-17.78" y="-45.72" size="1.778" layer="95">&gt;VALUE</text>
+</symbol>
+<symbol name="HDMI_A">
+<wire x1="0" y1="-22.86" x2="12.7" y2="-22.86" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-22.86" x2="12.7" y2="27.94" width="0.254" layer="94"/>
+<wire x1="12.7" y1="27.94" x2="0" y2="27.94" width="0.254" layer="94"/>
+<wire x1="0" y1="27.94" x2="0" y2="-22.86" width="0.254" layer="94"/>
+<pin name="TX2+" x="-5.08" y="25.4" length="middle"/>
+<pin name="TX2SHLD" x="-5.08" y="22.86" length="middle"/>
+<pin name="TX2-" x="-5.08" y="20.32" length="middle"/>
+<pin name="TX1+" x="-5.08" y="17.78" length="middle"/>
+<pin name="TX1SHLD" x="-5.08" y="15.24" length="middle"/>
+<pin name="TX1-" x="-5.08" y="12.7" length="middle"/>
+<pin name="TX0+" x="-5.08" y="10.16" length="middle"/>
+<pin name="TX0SHLD" x="-5.08" y="7.62" length="middle"/>
+<pin name="TX0-" x="-5.08" y="5.08" length="middle"/>
+<pin name="TXC+" x="-5.08" y="2.54" length="middle"/>
+<pin name="TXCSHLD" x="-5.08" y="0" length="middle"/>
+<pin name="TXC-" x="-5.08" y="-2.54" length="middle"/>
+<pin name="CEC" x="-5.08" y="-5.08" length="middle"/>
+<pin name="P$14" x="-5.08" y="-7.62" length="middle"/>
+<pin name="SCL" x="-5.08" y="-10.16" length="middle"/>
+<pin name="SDA" x="-5.08" y="-12.7" length="middle"/>
+<pin name="P$17" x="-5.08" y="-15.24" length="middle"/>
+<pin name="VCC" x="-5.08" y="-17.78" length="middle"/>
+<pin name="HPD" x="-5.08" y="-20.32" length="middle"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -2390,6 +2437,39 @@ Source: 1648045.pdf</description>
 <connect gate="G$1" pin="USBD+" pad="12"/>
 <connect gate="G$1" pin="USBD-" pad="11"/>
 <connect gate="G$1" pin="VDD" pad="20"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HDMI_A">
+<gates>
+<gate name="G$1" symbol="HDMI_A" x="-5.08" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="HDMI_A_SMD">
+<connects>
+<connect gate="G$1" pin="CEC" pad="P$13"/>
+<connect gate="G$1" pin="HPD" pad="P$19"/>
+<connect gate="G$1" pin="P$14" pad="P$14"/>
+<connect gate="G$1" pin="P$17" pad="P$17"/>
+<connect gate="G$1" pin="SCL" pad="P$15"/>
+<connect gate="G$1" pin="SDA" pad="P$16"/>
+<connect gate="G$1" pin="TX0+" pad="P$7"/>
+<connect gate="G$1" pin="TX0-" pad="P$9"/>
+<connect gate="G$1" pin="TX0SHLD" pad="P$8"/>
+<connect gate="G$1" pin="TX1+" pad="P$4"/>
+<connect gate="G$1" pin="TX1-" pad="P$6"/>
+<connect gate="G$1" pin="TX1SHLD" pad="P$5"/>
+<connect gate="G$1" pin="TX2+" pad="P$1"/>
+<connect gate="G$1" pin="TX2-" pad="P$3"/>
+<connect gate="G$1" pin="TX2SHLD" pad="P$2"/>
+<connect gate="G$1" pin="TXC+" pad="P$10"/>
+<connect gate="G$1" pin="TXC-" pad="P$11"/>
+<connect gate="G$1" pin="TXCSHLD" pad="P$12"/>
+<connect gate="G$1" pin="VCC" pad="P$18"/>
 </connects>
 <technologies>
 <technology name=""/>

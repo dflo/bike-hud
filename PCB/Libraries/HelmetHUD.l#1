@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -38,7 +38,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -1436,6 +1436,10 @@ Source: http://www.molex.com 1648045.pdf</description>
 <smd name="P$2" x="4" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
 <smd name="P$1" x="4.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
 <wire x1="-8" y1="-6.57" x2="8" y2="-6.57" width="0.127" layer="51"/>
+<hole x="-7.25" y="2.98" drill="2.7"/>
+<hole x="7.25" y="2.98" drill="2.7"/>
+<hole x="-7.25" y="-2.98" drill="1.7"/>
+<hole x="7.25" y="-2.98" drill="1.7"/>
 </package>
 </packages>
 <symbols>
@@ -1946,6 +1950,8 @@ Source: http://www.molex.com 1648045.pdf</description>
 <pin name="P$17" x="-5.08" y="-15.24" length="middle"/>
 <pin name="VCC" x="-5.08" y="-17.78" length="middle"/>
 <pin name="HPD" x="-5.08" y="-20.32" length="middle"/>
+<text x="0" y="27.94" size="1.778" layer="95">&gt;NAME</text>
+<text x="0" y="-25.4" size="1.778" layer="95">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
