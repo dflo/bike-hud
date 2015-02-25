@@ -2564,6 +2564,146 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 <label x="436.88" y="411.48" size="1.778" layer="95"/>
 </segment>
 </net>
+<net name="GPIOD7" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD7"/>
+<wire x1="393.7" y1="485.14" x2="403.86" y2="485.14" width="0.1524" layer="91"/>
+<label x="396.24" y="485.14" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOD6" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD6"/>
+<wire x1="393.7" y1="482.6" x2="403.86" y2="482.6" width="0.1524" layer="91"/>
+<label x="396.24" y="482.6" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOD5" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD5"/>
+<wire x1="393.7" y1="480.06" x2="403.86" y2="480.06" width="0.1524" layer="91"/>
+<label x="396.24" y="480.06" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOD4" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD4"/>
+<wire x1="393.7" y1="477.52" x2="403.86" y2="477.52" width="0.1524" layer="91"/>
+<label x="396.24" y="477.52" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOD3" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD3"/>
+<wire x1="393.7" y1="474.98" x2="403.86" y2="474.98" width="0.1524" layer="91"/>
+<label x="396.24" y="474.98" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOD2" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD2"/>
+<wire x1="393.7" y1="472.44" x2="403.86" y2="472.44" width="0.1524" layer="91"/>
+<label x="396.24" y="472.44" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOD1" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD1"/>
+<wire x1="393.7" y1="469.9" x2="403.86" y2="469.9" width="0.1524" layer="91"/>
+<label x="396.24" y="469.9" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOD0" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PD0"/>
+<wire x1="393.7" y1="467.36" x2="403.86" y2="467.36" width="0.1524" layer="91"/>
+<label x="396.24" y="467.36" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOK0" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PK0"/>
+<wire x1="337.82" y1="406.4" x2="332.74" y2="406.4" width="0.1524" layer="91"/>
+<label x="327.66" y="406.4" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOK1" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PK1"/>
+<wire x1="337.82" y1="408.94" x2="332.74" y2="408.94" width="0.1524" layer="91"/>
+<label x="327.66" y="408.94" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOK2" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PK2"/>
+<wire x1="337.82" y1="411.48" x2="332.74" y2="411.48" width="0.1524" layer="91"/>
+<label x="327.66" y="411.48" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOK3" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PK3"/>
+<wire x1="337.82" y1="414.02" x2="332.74" y2="414.02" width="0.1524" layer="91"/>
+<label x="327.66" y="414.02" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOA0" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PA0"/>
+<wire x1="393.7" y1="403.86" x2="403.86" y2="403.86" width="0.1524" layer="91"/>
+<label x="396.24" y="403.86" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOA1" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PA1"/>
+<wire x1="393.7" y1="406.4" x2="403.86" y2="406.4" width="0.1524" layer="91"/>
+<label x="396.24" y="406.4" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOA2" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PA2"/>
+<wire x1="393.7" y1="408.94" x2="403.86" y2="408.94" width="0.1524" layer="91"/>
+<label x="396.24" y="408.94" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOA3" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PA3"/>
+<wire x1="393.7" y1="411.48" x2="403.86" y2="411.48" width="0.1524" layer="91"/>
+<label x="396.24" y="411.48" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOC3" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PC3_TDO_SWO"/>
+<wire x1="393.7" y1="452.12" x2="403.86" y2="452.12" width="0.1524" layer="91"/>
+<label x="396.24" y="452.12" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOC2" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PC2_TDI"/>
+<wire x1="393.7" y1="449.58" x2="403.86" y2="449.58" width="0.1524" layer="91"/>
+<label x="396.24" y="449.58" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOC1" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PC1_TMS_SWDIO"/>
+<wire x1="393.7" y1="447.04" x2="403.86" y2="447.04" width="0.1524" layer="91"/>
+<label x="396.24" y="447.04" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOC0" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="PC0_TCK_SWCLK"/>
+<wire x1="393.7" y1="444.5" x2="403.86" y2="444.5" width="0.1524" layer="91"/>
+<label x="396.24" y="444.5" size="1.778" layer="95"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
