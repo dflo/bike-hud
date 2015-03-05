@@ -345,6 +345,7 @@ UsedLibrary="C:/EAGLE-7.2.0/lbr/xilinx-xc9.lbr"
 UsedLibrary="C:/EAGLE-7.2.0/lbr/xilinx-xcv.lbr"
 UsedLibrary="C:/EAGLE-7.2.0/lbr/zetex.lbr"
 UsedLibrary="C:/EAGLE-7.2.0/lbr/zilog.lbr"
+UsedLibrary="N:/bike-hud/PCB/Libraries/HelmetHUD.lbr"
 UsedLibrary="//shay.ecn.purdue.edu/477grp12/pchome/.pcprefs/Desktop/HelmetHUD.lbr"
 
 [Win_1]
@@ -354,5 +355,5 @@ State=2
 Number=0
 
 [Desktop]
-Screen="3200 1080"
+Screen="2560 1024"
 Window="Win_1"
