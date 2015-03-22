@@ -1,0 +1,1 @@
+cl /O2 /EHsc /I.\ jpegdec.c idct.c main.cpp
