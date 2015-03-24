@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.1" altunitdist="mil" altunit="mil"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -840,6 +840,8 @@
 <wire x1="6.7972" y1="14.3286" x2="-6.8028" y2="14.3286" width="0.127" layer="51"/>
 <wire x1="-6.8028" y1="14.3286" x2="-6.8028" y2="-11.6714" width="0.127" layer="51"/>
 <wire x1="-6.8028" y1="-11.6714" x2="6.7972" y2="-11.6714" width="0.127" layer="51"/>
+<text x="-1.27" y="-2.54" size="1.27" layer="21" rot="R90">&gt;NAME</text>
+<text x="2.54" y="-2.54" size="1.27" layer="21" rot="R90">&gt;VALUE</text>
 </package>
 <package name="HDMI_A_SMD">
 <smd name="P$19" x="-4.5" y="3.74" dx="2.6" dy="0.3" layer="1" rot="R90"/>
@@ -932,7 +934,6 @@ Source: http://download.micron.com/pdf/datasheets/dram/sdram/256MSDRAM.pdf</desc
 <smd name="52" x="-8.8" y="5.68" dx="0.9" dy="0.4" layer="1" rot="R90"/>
 <smd name="53" x="-9.6" y="5.68" dx="0.9" dy="0.4" layer="1" rot="R90"/>
 <smd name="54" x="-10.4" y="5.68" dx="0.9" dy="0.4" layer="1" rot="R90"/>
-<smd name="P$1" x="-11.75" y="-5.5" dx="0.7" dy="0.7" layer="1" roundness="100" cream="no"/>
 <text x="-9.118" y="2.964" size="0.8128" layer="25" ratio="18">&gt;NAME</text>
 <text x="-9.048" y="2.14" size="0.4064" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="-10.8" y1="-5.6675" x2="-10" y2="-5.2925" layer="51" rot="R90"/>
@@ -1482,6 +1483,24 @@ Source: http://www.molex.com/pdm_docs/sd/877580616_sd.pdf</description>
 <pad name="P$3" x="3.81" y="-2.667" drill="0.635"/>
 <pad name="P$4" x="6.35" y="-2.667" drill="0.635"/>
 <pad name="P$5" x="8.89" y="-2.667" drill="0.635"/>
+<text x="-3.81" y="1.27" size="1.27" layer="21">&gt;NAME</text>
+<text x="-3.81" y="-1.27" size="1.27" layer="21">&gt;VALUE</text>
+</package>
+<package name="22-23-2041">
+<description>.100" (2.54mm) Center Header - 4 Pin</description>
+<wire x1="-5.08" y1="3.175" x2="5.08" y2="3.175" width="0.254" layer="21"/>
+<wire x1="5.08" y1="3.175" x2="5.08" y2="1.27" width="0.254" layer="21"/>
+<wire x1="5.08" y1="1.27" x2="5.08" y2="-3.175" width="0.254" layer="21"/>
+<wire x1="5.08" y1="-3.175" x2="-5.08" y2="-3.175" width="0.254" layer="21"/>
+<wire x1="-5.08" y1="-3.175" x2="-5.08" y2="1.27" width="0.254" layer="21"/>
+<wire x1="-5.08" y1="1.27" x2="-5.08" y2="3.175" width="0.254" layer="21"/>
+<wire x1="-5.08" y1="1.27" x2="5.08" y2="1.27" width="0.254" layer="21"/>
+<pad name="1" x="-3.81" y="0" drill="1" shape="long" rot="R90"/>
+<pad name="2" x="-1.27" y="0" drill="1" shape="long" rot="R90"/>
+<pad name="3" x="1.27" y="0" drill="1" shape="long" rot="R90"/>
+<pad name="4" x="3.81" y="0" drill="1" shape="long" rot="R90"/>
+<text x="-5.08" y="3.81" size="1.016" layer="25" ratio="10">&gt;NAME</text>
+<text x="-5.08" y="-5.08" size="1.016" layer="27" ratio="10">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -2560,7 +2579,7 @@ push-push type</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="1365-10" prefix="X">
+<deviceset name="1365-10" prefix="X" uservalue="yes">
 <description>&lt;b&gt;DUAL ROW STRAIGHT HEADER&lt;/b&gt; 1364 SERIES. 1.27mm x 1.27mm. Without Fixing Post. SMT&lt;p&gt;
 Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1364ing.pdf</description>
 <gates>
@@ -2595,6 +2614,7 @@ Source: http://www.leotronics.co.uk/Conexcon/Data%20Sheets/sec.%20A/1364ing.pdf<
 <attribute name="MPN" value="" constant="no"/>
 <attribute name="OC_FARNELL" value="unknown" constant="no"/>
 <attribute name="OC_NEWARK" value="unknown" constant="no"/>
+<attribute name="VALUE" value="Cortex 10" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2847,7 +2867,7 @@ Source: http://www.molex.com/pdm_docs/sd/877580616_sd.pdf</description>
 <attribute name="MPN" value="87758-2016" constant="no"/>
 <attribute name="OC_FARNELL" value="7472374" constant="no"/>
 <attribute name="OC_NEWARK" value="25M5677" constant="no"/>
-<attribute name="VALUE" value="Cortex 10" constant="no"/>
+<attribute name="VALUE" value="Camera HDR" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -2908,6 +2928,33 @@ Standard adjustable voltage regulator but in SMD form. Spark Fun Electronics SKU
 </connects>
 <technologies>
 <technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="22-23-2041" prefix="X">
+<description>.100" (2.54mm) Center Header - 4 Pin</description>
+<gates>
+<gate name="-1" symbol="MV" x="0" y="2.54" addlevel="always" swaplevel="1"/>
+<gate name="-2" symbol="M-1" x="0" y="0" addlevel="always" swaplevel="1"/>
+<gate name="-3" symbol="M-1" x="0" y="-2.54" addlevel="always" swaplevel="1"/>
+<gate name="-4" symbol="M-1" x="0" y="-5.08" addlevel="always" swaplevel="1"/>
+</gates>
+<devices>
+<device name="" package="22-23-2041">
+<connects>
+<connect gate="-1" pin="S" pad="1"/>
+<connect gate="-2" pin="S" pad="2"/>
+<connect gate="-3" pin="S" pad="3"/>
+<connect gate="-4" pin="S" pad="4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="MF" value="MOLEX" constant="no"/>
+<attribute name="MPN" value="22-23-2041" constant="no"/>
+<attribute name="OC_FARNELL" value="1462920" constant="no"/>
+<attribute name="OC_NEWARK" value="38C0355" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -3035,43 +3082,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 &lt;br&gt;&lt;br&gt;
 You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
 <packages>
-<package name="CAP-PTH-SMALL-KIT">
-<description>&lt;h3&gt;CAP-PTH-SMALL-KIT&lt;/h3&gt;
-Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.com/products/8375) or 22pF caps (http://www.sparkfun.com/products/8571).&lt;br&gt;
-&lt;br&gt;
-&lt;b&gt;Warning:&lt;/b&gt; This is the KIT version of this package. This package has a smaller diameter top stop mask, which doesn't cover the diameter of the pad. This means only the bottom side of the pads' copper will be exposed. You'll only be able to solder to the bottom side.</description>
-<wire x1="0" y1="0.635" x2="0" y2="-0.635" width="0.254" layer="21"/>
-<wire x1="-2.667" y1="1.27" x2="2.667" y2="1.27" width="0.254" layer="21"/>
-<wire x1="2.667" y1="1.27" x2="2.667" y2="-1.27" width="0.254" layer="21"/>
-<wire x1="2.667" y1="-1.27" x2="-2.667" y2="-1.27" width="0.254" layer="21"/>
-<wire x1="-2.667" y1="-1.27" x2="-2.667" y2="1.27" width="0.254" layer="21"/>
-<pad name="1" x="-1.397" y="0" drill="1.016" diameter="2.032" stop="no"/>
-<pad name="2" x="1.397" y="0" drill="1.016" diameter="2.032" stop="no"/>
-<polygon width="0.127" layer="30">
-<vertex x="-1.4021" y="-0.9475" curve="-90"/>
-<vertex x="-2.357" y="-0.0178" curve="-90.011749"/>
-<vertex x="-1.4046" y="0.9576" curve="-90"/>
-<vertex x="-0.4546" y="-0.0204" curve="-90.024193"/>
-</polygon>
-<polygon width="0.127" layer="29">
-<vertex x="-1.4046" y="-0.4395" curve="-90.012891"/>
-<vertex x="-1.8491" y="-0.0153" curve="-90"/>
-<vertex x="-1.4046" y="0.452" curve="-90"/>
-<vertex x="-0.9627" y="-0.0051" curve="-90.012967"/>
-</polygon>
-<polygon width="0.127" layer="30">
-<vertex x="1.397" y="-0.9475" curve="-90"/>
-<vertex x="0.4421" y="-0.0178" curve="-90.011749"/>
-<vertex x="1.3945" y="0.9576" curve="-90"/>
-<vertex x="2.3445" y="-0.0204" curve="-90.024193"/>
-</polygon>
-<polygon width="0.127" layer="29">
-<vertex x="1.3945" y="-0.4395" curve="-90.012891"/>
-<vertex x="0.95" y="-0.0153" curve="-90"/>
-<vertex x="1.3945" y="0.452" curve="-90"/>
-<vertex x="1.8364" y="-0.0051" curve="-90.012967"/>
-</polygon>
-</package>
 <package name="EIA3216">
 <wire x1="-1" y1="-1.2" x2="-2.5" y2="-1.2" width="0.2032" layer="21"/>
 <wire x1="-2.5" y1="-1.2" x2="-2.5" y2="1.2" width="0.2032" layer="21"/>
@@ -3421,16 +3431,6 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 </package>
 </packages>
 <symbols>
-<symbol name="CAP">
-<wire x1="0" y1="2.54" x2="0" y2="2.032" width="0.1524" layer="94"/>
-<wire x1="0" y1="0" x2="0" y2="0.508" width="0.1524" layer="94"/>
-<text x="1.524" y="2.921" size="1.778" layer="95">&gt;NAME</text>
-<text x="1.524" y="-2.159" size="1.778" layer="96">&gt;VALUE</text>
-<rectangle x1="-2.032" y1="0.508" x2="2.032" y2="1.016" layer="94"/>
-<rectangle x1="-2.032" y1="1.524" x2="2.032" y2="2.032" layer="94"/>
-<pin name="1" x="0" y="5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
-<pin name="2" x="0" y="-2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
-</symbol>
 <symbol name="CAP_POL">
 <wire x1="-2.54" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="-1.016" x2="0" y2="-2.54" width="0.1524" layer="94"/>
@@ -3445,25 +3445,6 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="0.1UF-50V-20%(PTH)" prefix="C" uservalue="yes">
-<description>CAP-08370</description>
-<gates>
-<gate name="G$1" symbol="CAP" x="0" y="-2.54"/>
-</gates>
-<devices>
-<device name="KIT-EZ" package="CAP-PTH-SMALL-KIT">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="CAP-08370" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="CAP_POL" prefix="C" uservalue="yes">
 <description>&lt;b&gt;Capacitor Polarized&lt;/b&gt;
 These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in electrolytic and tantalum varieties. Always verify the external diameter of the through hole cap, it varies with capacity, voltage, and manufacturer. The EIA devices should be standard.</description>
@@ -5318,7 +5299,7 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="74*1G00" prefix="IC">
+<deviceset name="74*1G00" prefix="IC" uservalue="yes">
 <description>2-input &lt;b&gt;NAND&lt;/b&gt; gate</description>
 <gates>
 <gate name="A" symbol="7400" x="20.32" y="0"/>
@@ -5334,10 +5315,18 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <connect gate="P" pin="VCC" pad="5"/>
 </connects>
 <technologies>
-<technology name="AHC"/>
-<technology name="AHCT"/>
-<technology name="AUC"/>
-<technology name="LVC"/>
+<technology name="AHC">
+<attribute name="VALUE" value="NAND" constant="no"/>
+</technology>
+<technology name="AHCT">
+<attribute name="VALUE" value="NAND" constant="no"/>
+</technology>
+<technology name="AUC">
+<attribute name="VALUE" value="NAND" constant="no"/>
+</technology>
+<technology name="LVC">
+<attribute name="VALUE" value="NAND" constant="no"/>
+</technology>
 </technologies>
 </device>
 <device name="DCK" package="SC70-5">
@@ -5400,7 +5389,6 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <part name="GND13" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND14" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="R3" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="2.2K"/>
-<part name="C8" library="SparkFun-Capacitors" deviceset="0.1UF-50V-20%(PTH)" device="KIT-EZ"/>
 <part name="GND15" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="SUPPLY8" library="HelmetHUD" deviceset="3.3V" device=""/>
 <part name="SUPPLY9" library="HelmetHUD" deviceset="3.3V" device=""/>
@@ -5415,13 +5403,12 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <part name="SUPPLY15" library="HelmetHUD" deviceset="5V" device=""/>
 <part name="SUPPLY16" library="HelmetHUD" deviceset="5V" device=""/>
 <part name="GND20" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="X1" library="HelmetHUD" deviceset="1365-10" device=""/>
+<part name="X1" library="HelmetHUD" deviceset="1365-10" device="" value="Cortex 10"/>
 <part name="GND21" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND22" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND23" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="SUPPLY17" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="GND24" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="C10" library="SparkFun-Capacitors" deviceset="0.1UF-50V-20%(PTH)" device="KIT-EZ"/>
 <part name="GND25" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="C15" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="2.2 uF"/>
 <part name="C9" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="0.01 uF"/>
@@ -5507,12 +5494,11 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <part name="R21" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES" value="200k"/>
 <part name="GND58" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="R22" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES" value="33m"/>
-<part name="X6" library="HelmetHUD" deviceset="87758-2016" device="" value="Cortex 10"/>
+<part name="X6" library="HelmetHUD" deviceset="87758-2016" device="" value="Camera HDR"/>
 <part name="SUPPLY20" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="GND59" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="R23" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="8"/>
 <part name="GND60" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="C11" library="SparkFun-Capacitors" deviceset="0.1UF-50V-20%(PTH)" device="KIT-EZ"/>
 <part name="IC1" library="HelmetHUD" deviceset="V_REG_LM1117" device="SOT223"/>
 <part name="U$4" library="HelmetHUD" deviceset="PTN04050C" device=""/>
 <part name="GND41" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
@@ -5523,19 +5509,26 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <part name="R15" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES" value="15k"/>
 <part name="GND43" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="C44" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value=".1uF"/>
-<part name="C45" library="SparkFun-Capacitors" deviceset="0.1UF-50V-20%(PTH)" device="KIT-EZ" value="4.7 uF"/>
 <part name="GND44" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="R17" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES" value="5M"/>
 <part name="R18" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES" value="100k"/>
 <part name="R19" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES" value="100k"/>
 <part name="C47" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="1uF"/>
-<part name="IC2" library="74xx-little-us" deviceset="74*1G00" device="DBV" technology="AHC"/>
-<part name="IC3" library="74xx-little-us" deviceset="74*1G00" device="DBV" technology="AHC"/>
+<part name="IC2" library="74xx-little-us" deviceset="74*1G00" device="DBV" technology="AHC" value="NAND"/>
+<part name="IC3" library="74xx-little-us" deviceset="74*1G00" device="DBV" technology="AHC" value="NAND"/>
 <part name="C50" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="1uF"/>
 <part name="GND45" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="S3" library="SparkFun-Retired" deviceset="TAC_SWITCH" device="PTH"/>
 <part name="C4" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="10uF"/>
 <part name="C7" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="10uF"/>
+<part name="R16" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="0"/>
+<part name="GND46" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
+<part name="X7" library="HelmetHUD" deviceset="22-23-2041" device=""/>
+<part name="GND47" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
+<part name="C46" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="4.7uF"/>
+<part name="C8" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="47 nF"/>
+<part name="C10" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="47 nF"/>
+<part name="C11" library="SparkFun-Passives" deviceset="CAP" device="0603-CAP" value="1uF"/>
+<part name="X8" library="con-molex" deviceset="KK-156-2" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5579,8 +5572,7 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <instance part="GND13" gate="1" x="220.98" y="492.76" rot="R180"/>
 <instance part="GND14" gate="1" x="116.84" y="480.06" rot="R180"/>
 <instance part="R3" gate="G$1" x="762" y="480.06" rot="R90"/>
-<instance part="C8" gate="G$1" x="754.38" y="464.82" rot="R180"/>
-<instance part="GND15" gate="1" x="708.66" y="408.94"/>
+<instance part="GND15" gate="1" x="708.66" y="396.24"/>
 <instance part="SUPPLY8" gate="G$1" x="680.72" y="502.92"/>
 <instance part="SUPPLY9" gate="G$1" x="739.14" y="215.9"/>
 <instance part="GND16" gate="1" x="739.14" y="172.72"/>
@@ -5609,7 +5601,6 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <instance part="GND23" gate="1" x="586.74" y="487.68" rot="R180"/>
 <instance part="SUPPLY17" gate="G$1" x="596.9" y="485.14"/>
 <instance part="GND24" gate="1" x="86.36" y="381"/>
-<instance part="C10" gate="G$1" x="746.76" y="487.68" rot="R270"/>
 <instance part="GND25" gate="1" x="777.24" y="477.52"/>
 <instance part="C15" gate="G$1" x="543.56" y="264.16"/>
 <instance part="C9" gate="G$1" x="530.86" y="264.16"/>
@@ -5723,7 +5714,6 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <instance part="GND59" gate="1" x="533.4" y="515.62"/>
 <instance part="R23" gate="G$1" x="543.56" y="535.94" rot="R270"/>
 <instance part="GND60" gate="1" x="754.38" y="452.12"/>
-<instance part="C11" gate="G$1" x="744.22" y="477.52" rot="R180"/>
 <instance part="IC1" gate="G$1" x="269.24" y="114.3"/>
 <instance part="U$4" gate="G$1" x="215.9" y="127"/>
 <instance part="GND41" gate="1" x="269.24" y="88.9"/>
@@ -5734,7 +5724,6 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <instance part="R15" gate="G$1" x="231.14" y="162.56" rot="R90"/>
 <instance part="GND43" gate="1" x="213.36" y="149.86"/>
 <instance part="C44" gate="G$1" x="482.6" y="421.64"/>
-<instance part="C45" gate="G$1" x="680.72" y="490.22" rot="R180"/>
 <instance part="GND44" gate="1" x="680.72" y="480.06"/>
 <instance part="R17" gate="G$1" x="66.04" y="119.38" rot="R180"/>
 <instance part="R18" gate="G$1" x="114.3" y="147.32" rot="R90"/>
@@ -5744,9 +5733,21 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <instance part="IC3" gate="A" x="137.16" y="134.62"/>
 <instance part="C50" gate="G$1" x="78.74" y="111.76" rot="R180"/>
 <instance part="GND45" gate="1" x="78.74" y="101.6"/>
-<instance part="S3" gate="S" x="58.42" y="111.76" rot="R270"/>
 <instance part="C4" gate="G$1" x="256.54" y="101.6"/>
 <instance part="C7" gate="G$1" x="304.8" y="101.6"/>
+<instance part="R16" gate="G$1" x="680.72" y="419.1" rot="R90"/>
+<instance part="GND46" gate="1" x="680.72" y="408.94"/>
+<instance part="X7" gate="-1" x="314.96" y="208.28"/>
+<instance part="X7" gate="-2" x="314.96" y="205.74"/>
+<instance part="X7" gate="-3" x="314.96" y="203.2"/>
+<instance part="X7" gate="-4" x="314.96" y="200.66"/>
+<instance part="GND47" gate="1" x="309.88" y="195.58"/>
+<instance part="C46" gate="G$1" x="680.72" y="490.22" rot="R180"/>
+<instance part="C8" gate="G$1" x="746.76" y="487.68" rot="R270"/>
+<instance part="C10" gate="G$1" x="744.22" y="477.52" rot="R180"/>
+<instance part="C11" gate="G$1" x="754.38" y="464.82" rot="R180"/>
+<instance part="X8" gate="-1" x="53.34" y="109.22" rot="R180"/>
+<instance part="X8" gate="-2" x="53.34" y="114.3" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -5985,15 +5986,14 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="GND6"/>
-<wire x1="685.8" y1="436.88" x2="680.72" y2="436.88" width="0.1524" layer="91"/>
-<wire x1="680.72" y1="436.88" x2="680.72" y2="434.34" width="0.1524" layer="91"/>
-<wire x1="680.72" y1="434.34" x2="680.72" y2="431.8" width="0.1524" layer="91"/>
-<wire x1="680.72" y1="431.8" x2="680.72" y2="429.26" width="0.1524" layer="91"/>
-<wire x1="680.72" y1="429.26" x2="680.72" y2="426.72" width="0.1524" layer="91"/>
-<wire x1="680.72" y1="426.72" x2="680.72" y2="416.56" width="0.1524" layer="91"/>
-<wire x1="680.72" y1="416.56" x2="708.66" y2="416.56" width="0.1524" layer="91"/>
-<wire x1="708.66" y1="416.56" x2="736.6" y2="416.56" width="0.1524" layer="91"/>
-<wire x1="736.6" y1="416.56" x2="736.6" y2="426.72" width="0.1524" layer="91"/>
+<wire x1="685.8" y1="436.88" x2="673.1" y2="436.88" width="0.1524" layer="91"/>
+<wire x1="673.1" y1="436.88" x2="673.1" y2="434.34" width="0.1524" layer="91"/>
+<wire x1="673.1" y1="434.34" x2="673.1" y2="431.8" width="0.1524" layer="91"/>
+<wire x1="673.1" y1="431.8" x2="673.1" y2="429.26" width="0.1524" layer="91"/>
+<wire x1="673.1" y1="429.26" x2="673.1" y2="403.86" width="0.1524" layer="91"/>
+<wire x1="673.1" y1="403.86" x2="708.66" y2="403.86" width="0.1524" layer="91"/>
+<wire x1="708.66" y1="403.86" x2="736.6" y2="403.86" width="0.1524" layer="91"/>
+<wire x1="736.6" y1="403.86" x2="736.6" y2="426.72" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="GND"/>
 <wire x1="736.6" y1="426.72" x2="736.6" y2="429.26" width="0.1524" layer="91"/>
 <wire x1="736.6" y1="429.26" x2="736.6" y2="431.8" width="0.1524" layer="91"/>
@@ -6017,20 +6017,17 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <wire x1="731.52" y1="426.72" x2="736.6" y2="426.72" width="0.1524" layer="91"/>
 <junction x="736.6" y="426.72"/>
 <pinref part="U$1" gate="G$1" pin="GND7"/>
-<wire x1="685.8" y1="434.34" x2="680.72" y2="434.34" width="0.1524" layer="91"/>
-<junction x="680.72" y="434.34"/>
+<wire x1="685.8" y1="434.34" x2="673.1" y2="434.34" width="0.1524" layer="91"/>
+<junction x="673.1" y="434.34"/>
 <pinref part="U$1" gate="G$1" pin="GND8"/>
-<wire x1="685.8" y1="431.8" x2="680.72" y2="431.8" width="0.1524" layer="91"/>
-<junction x="680.72" y="431.8"/>
+<wire x1="685.8" y1="431.8" x2="673.1" y2="431.8" width="0.1524" layer="91"/>
+<junction x="673.1" y="431.8"/>
 <pinref part="U$1" gate="G$1" pin="GND9"/>
-<wire x1="685.8" y1="429.26" x2="680.72" y2="429.26" width="0.1524" layer="91"/>
-<junction x="680.72" y="429.26"/>
-<pinref part="U$1" gate="G$1" pin="AGND"/>
-<wire x1="685.8" y1="426.72" x2="680.72" y2="426.72" width="0.1524" layer="91"/>
-<junction x="680.72" y="426.72"/>
+<wire x1="685.8" y1="429.26" x2="673.1" y2="429.26" width="0.1524" layer="91"/>
+<junction x="673.1" y="429.26"/>
 <pinref part="GND15" gate="1" pin="GND"/>
-<wire x1="708.66" y1="411.48" x2="708.66" y2="416.56" width="0.1524" layer="91"/>
-<junction x="708.66" y="416.56"/>
+<wire x1="708.66" y1="398.78" x2="708.66" y2="403.86" width="0.1524" layer="91"/>
+<junction x="708.66" y="403.86"/>
 </segment>
 <segment>
 <pinref part="GND16" gate="1" pin="GND"/>
@@ -6401,9 +6398,9 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <pinref part="GND59" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="C8" gate="G$1" pin="1"/>
 <wire x1="754.38" y1="459.74" x2="754.38" y2="454.66" width="0.1524" layer="91"/>
 <pinref part="GND60" gate="1" pin="GND"/>
+<pinref part="C11" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="ADJ"/>
@@ -6446,9 +6443,9 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <pinref part="GND43" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="C45" gate="G$1" pin="1"/>
 <pinref part="GND44" gate="1" pin="GND"/>
 <wire x1="680.72" y1="485.14" x2="680.72" y2="482.6" width="0.1524" layer="91"/>
+<pinref part="C46" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="C50" gate="G$1" pin="1"/>
@@ -6456,12 +6453,24 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <wire x1="78.74" y1="104.14" x2="78.74" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="104.14" x2="58.42" y2="104.14" width="0.1524" layer="91"/>
 <junction x="78.74" y="104.14"/>
-<pinref part="S3" gate="S" pin="4"/>
-<wire x1="58.42" y1="104.14" x2="55.88" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="104.14" x2="55.88" y2="106.68" width="0.1524" layer="91"/>
-<pinref part="S3" gate="S" pin="3"/>
-<wire x1="58.42" y1="104.14" x2="58.42" y2="106.68" width="0.1524" layer="91"/>
-<junction x="58.42" y="104.14"/>
+<wire x1="58.42" y1="104.14" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="X8" gate="-1" pin="S"/>
+<wire x1="58.42" y1="109.22" x2="55.88" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R16" gate="G$1" pin="1"/>
+<pinref part="GND46" gate="1" pin="GND"/>
+<wire x1="680.72" y1="414.02" x2="680.72" y2="411.48" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="X7" gate="-3" pin="S"/>
+<wire x1="312.42" y1="203.2" x2="309.88" y2="203.2" width="0.1524" layer="91"/>
+<wire x1="309.88" y1="203.2" x2="309.88" y2="200.66" width="0.1524" layer="91"/>
+<pinref part="X7" gate="-4" pin="S"/>
+<wire x1="309.88" y1="200.66" x2="309.88" y2="198.12" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="200.66" x2="309.88" y2="200.66" width="0.1524" layer="91"/>
+<junction x="309.88" y="200.66"/>
+<pinref part="GND47" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="1.8V" class="0">
@@ -6526,6 +6535,7 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <junction x="127" y="441.96"/>
 <pinref part="C40" gate="G$1" pin="2"/>
 <junction x="127" y="449.58"/>
+<junction x="127" y="436.88"/>
 </segment>
 <segment>
 <pinref part="SUPPLY4" gate="G$1" pin="1.8V"/>
@@ -6677,11 +6687,11 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <wire x1="744.22" y1="469.9" x2="754.38" y2="469.9" width="0.1524" layer="91"/>
 <wire x1="754.38" y1="469.9" x2="762" y2="469.9" width="0.1524" layer="91"/>
 <junction x="754.38" y="469.9"/>
-<pinref part="C8" gate="G$1" pin="2"/>
 <wire x1="754.38" y1="467.36" x2="754.38" y2="469.9" width="0.1524" layer="91"/>
-<pinref part="C11" gate="G$1" pin="1"/>
 <wire x1="744.22" y1="469.9" x2="744.22" y2="472.44" width="0.1524" layer="91"/>
 <junction x="744.22" y="469.9"/>
+<pinref part="C10" gate="G$1" pin="1"/>
+<pinref part="C11" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
@@ -6694,9 +6704,9 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <wire x1="685.8" y1="495.3" x2="680.72" y2="495.3" width="0.1524" layer="91"/>
 <wire x1="680.72" y1="495.3" x2="680.72" y2="500.38" width="0.1524" layer="91"/>
 <junction x="680.72" y="500.38"/>
-<pinref part="C45" gate="G$1" pin="2"/>
 <wire x1="680.72" y1="495.3" x2="680.72" y2="492.76" width="0.1524" layer="91"/>
 <junction x="680.72" y="495.3"/>
+<pinref part="C46" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="SUPPLY9" gate="G$1" pin="3.3V"/>
@@ -7713,18 +7723,18 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <segment>
 <pinref part="U$1" gate="G$1" pin="MIC_R-"/>
 <wire x1="731.52" y1="487.68" x2="744.22" y2="487.68" width="0.1524" layer="91"/>
-<pinref part="C10" gate="G$1" pin="2"/>
+<pinref part="C8" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
-<pinref part="C10" gate="G$1" pin="1"/>
 <wire x1="751.84" y1="487.68" x2="762" y2="487.68" width="0.1524" layer="91"/>
 <pinref part="X4" gate="-1" pin="S"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="762" y1="487.68" x2="784.86" y2="487.68" width="0.1524" layer="91"/>
 <wire x1="762" y1="487.68" x2="762" y2="485.14" width="0.1524" layer="91"/>
 <junction x="762" y="487.68"/>
+<pinref part="C8" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -7766,8 +7776,9 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <wire x1="182.88" y1="124.46" x2="175.26" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="182.88" y1="119.38" x2="182.88" y2="124.46" width="0.1524" layer="91"/>
 <junction x="182.88" y="124.46"/>
-<wire x1="175.26" y1="208.28" x2="312.42" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="208.28" x2="304.8" y2="208.28" width="0.1524" layer="91"/>
 <pinref part="U$5" gate="G$1" pin="V_IN"/>
+<wire x1="304.8" y1="208.28" x2="312.42" y2="208.28" width="0.1524" layer="91"/>
 <wire x1="198.12" y1="180.34" x2="175.26" y2="180.34" width="0.1524" layer="91"/>
 <junction x="175.26" y="180.34"/>
 <label x="307.34" y="208.28" size="1.778" layer="95"/>
@@ -7783,6 +7794,11 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <junction x="157.48" y="134.62"/>
 <wire x1="170.18" y1="124.46" x2="175.26" y2="124.46" width="0.1524" layer="91"/>
 <junction x="175.26" y="124.46"/>
+<pinref part="X7" gate="-1" pin="S"/>
+<pinref part="X7" gate="-2" pin="S"/>
+<wire x1="312.42" y1="205.74" x2="304.8" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="304.8" y1="205.74" x2="304.8" y2="208.28" width="0.1524" layer="91"/>
+<junction x="304.8" y="208.28"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -8194,10 +8210,10 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 </net>
 <net name="N$59" class="0">
 <segment>
-<pinref part="C11" gate="G$1" pin="2"/>
 <wire x1="744.22" y1="480.06" x2="744.22" y2="482.6" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="MIC_R+"/>
 <wire x1="744.22" y1="482.6" x2="731.52" y2="482.6" width="0.1524" layer="91"/>
+<pinref part="C10" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$22" class="0">
@@ -8252,12 +8268,10 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <wire x1="58.42" y1="119.38" x2="58.42" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="139.7" x2="93.98" y2="139.7" width="0.1524" layer="91"/>
 <junction x="93.98" y="139.7"/>
-<pinref part="S3" gate="S" pin="1"/>
-<wire x1="58.42" y1="116.84" x2="58.42" y2="119.38" width="0.1524" layer="91"/>
 <junction x="58.42" y="119.38"/>
-<pinref part="S3" gate="S" pin="2"/>
-<wire x1="55.88" y1="116.84" x2="55.88" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="119.38" x2="58.42" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="119.38" x2="58.42" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="X8" gate="-2" pin="S"/>
+<wire x1="58.42" y1="114.3" x2="55.88" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$42" class="0">
@@ -8304,6 +8318,14 @@ Source: http://www.semiconductors.philips.com/acrobat_download/datasheets/74HC_H
 <pinref part="R17" gate="G$1" pin="1"/>
 <wire x1="78.74" y1="119.38" x2="71.12" y2="119.38" width="0.1524" layer="91"/>
 <junction x="78.74" y="119.38"/>
+</segment>
+</net>
+<net name="N$28" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="AGND"/>
+<pinref part="R16" gate="G$1" pin="2"/>
+<wire x1="685.8" y1="426.72" x2="680.72" y2="426.72" width="0.1524" layer="91"/>
+<wire x1="680.72" y1="426.72" x2="680.72" y2="424.18" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
