@@ -1,1 +1,0 @@
-cl /O2 /EHsc /I.\ jpegenc.c dct.c main.cpp

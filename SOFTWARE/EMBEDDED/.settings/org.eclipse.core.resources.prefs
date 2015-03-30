@@ -1,14 +1,4 @@
 eclipse.preferences.version=1
-encoding//Debug/libs/fatfs/doc/img/subdir_rules.mk=UTF-8
-encoding//Debug/libs/fatfs/doc/img/subdir_vars.mk=UTF-8
-encoding//Debug/libs/fatfs/option/subdir_rules.mk=UTF-8
-encoding//Debug/libs/fatfs/option/subdir_vars.mk=UTF-8
-encoding//Debug/libs/fatfs/subdir_rules.mk=UTF-8
-encoding//Debug/libs/fatfs/subdir_vars.mk=UTF-8
-encoding//Debug/libs/jpegant/decoder/subdir_rules.mk=UTF-8
-encoding//Debug/libs/jpegant/decoder/subdir_vars.mk=UTF-8
-encoding//Debug/libs/jpegant/encoder/subdir_rules.mk=UTF-8
-encoding//Debug/libs/jpegant/encoder/subdir_vars.mk=UTF-8
 encoding//Debug/makefile=UTF-8
 encoding//Debug/objects.mk=UTF-8
 encoding//Debug/sources.mk=UTF-8
