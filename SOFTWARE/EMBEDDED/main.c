@@ -5,7 +5,9 @@
 #include "driverlib/debug.h"
 #include "driverlib/gpio.h"
 #include "driverlib/rom.h"
+#include "driverlib/pwm.h"
 #include "driverlib/sysctl.h"
+#include "driverlib/pin_map.h"
 
 //*****************************************************************************
 //
@@ -27,52 +29,37 @@ __error__(char *pcFilename, uint32_t ui32Line)
 int
 main(void)
 {
-    volatile uint32_t ui32Loop;
+	unsigned long ulPeriod = 4; //20ms (16Mhz / 64pwm_divider / 50)
+	//
+	// Run from the PLL at 120 MHz.
+	//
+	SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480), 120000000);
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM0);    //Enable control of PWM module 0
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);   //Enable control of GPIO F
+	SysCtlDelay(10);
 
-    //
-    // Enable the GPIO port that is used for the on-board LED.
-    //
-    SYSCTL_RCGCGPIO_R = SYSCTL_RCGCGPIO_R14;
+	// Configure PWM Clock to match system
+	PWMClockSet(PWM0_BASE, PWM_SYSCLK_DIV_1);
 
-    //
-    // Do a dummy read to insert a few cycles after enabling the peripheral.
-    //
-    ui32Loop = SYSCTL_RCGCGPIO_R;
+	GPIOPinConfigure(GPIO_PF2_M0PWM2);    //Map PF2 to PWM0 G1, OP 2
+	GPIOPinConfigure(GPIO_PF3_M0PWM3);    //Map PF3 to PWM0 G1, OP 3
 
-    //
-    // Enable the GPIO pin for the LED (PQ7).  Set the direction as output, and
-    // enable the GPIO pin for digital function.
-    //
-    GPIO_PORTQ_DIR_R = 0x80;
-    GPIO_PORTQ_DEN_R = 0x80;
+	GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3);    //Configure PF2 PF3 as PWM
 
-    //
-    // Loop forever.
-    //
-    while(1)
-    {
-        //
-        // Turn on the LED.
-        //
-        GPIO_PORTQ_DATA_R |= 0x80;
+	//Configure PWM0 G1 as UP/DOWN counter with no sync of updates
+	PWMGenConfigure(PWM0_BASE, PWM_GEN_1, PWM_GEN_MODE_UP_DOWN | PWM_GEN_MODE_NO_SYNC);
 
-        //
-        // Delay for a bit.
-        //
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
+	PWMGenPeriodSet(PWM0_BASE, PWM_GEN_1, ulPeriod);    //Set period of PWM0 G1
 
-        //
-        // Turn off the LED.
-        //
-        GPIO_PORTQ_DATA_R &= ~(0x80);
+	PWMPulseWidthSet(PWM0_BASE, PWM_OUT_2, ulPeriod / 2);    //Set duty cycle of PWM0 G1
+	PWMPulseWidthSet(PWM0_BASE, PWM_OUT_3, ulPeriod / 2);    //Set duty cycle of PWM0 G1
 
-        //
-        // Delay for a bit.
-        //
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
-    }
+	PWMOutputState(PWM0_BASE, (PWM_OUT_2_BIT | PWM_OUT_3_BIT), true);    //Enable OP 0,1 on PWM0 G0
+
+	PWMGenEnable(PWM0_BASE, PWM_GEN_1);    //Enable PWM0, G0
+
+	while(1)
+	{
+
+	}
 }

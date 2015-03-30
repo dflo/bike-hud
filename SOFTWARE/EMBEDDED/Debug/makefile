@@ -8,31 +8,13 @@ CG_TOOL_ROOT := E:/Programs/TI/CCS/ccsv5/tools/compiler/arm_5.0.4
 
 ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
-"./libs/fatfs/doc/img/app4.obj" \
-"./libs/fatfs/doc/img/app3.obj" \
-"./libs/fatfs/doc/img/app2.obj" \
-"./libs/fatfs/doc/img/app1.obj" \
-"./libs/fatfs/ff.obj" \
-"./libs/fatfs/diskio.obj" \
-"./libs/fatfs/option/unicode.obj" \
-"./libs/fatfs/option/syscall.obj" \
-"./libs/fatfs/option/ccsbcs.obj" \
-"./libs/fatfs/option/cc950.obj" \
-"./libs/fatfs/option/cc949.obj" \
-"./libs/fatfs/option/cc936.obj" \
-"./libs/fatfs/option/cc932.obj" \
-"./libs/jpegant/decoder/main.obj" \
-"./libs/jpegant/decoder/jpegdec.obj" \
-"./libs/jpegant/decoder/idct.obj" \
-"./libs/jpegant/encoder/main.obj" \
 "./libs/jpegant/encoder/jpegenc.obj" \
 "./libs/jpegant/encoder/dct.obj" \
 "./startup_ccs.obj" \
 "./main.obj" \
 -l"libc.a" \
+-l"E:/Programs/TI/TivaWareCv2\driverlib\ccs\Debug\driverlib.lib" \
 "../bike_hud.cmd" \
-"../libs/jpegant/encoder/build.cmd" \
-"../libs/jpegant/decoder/build.cmd" \
 
 -include ../makefile.init
 
@@ -43,16 +25,8 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include libs/jpegant/encoder/subdir_vars.mk
--include libs/jpegant/decoder/subdir_vars.mk
--include libs/fatfs/option/subdir_vars.mk
--include libs/fatfs/subdir_vars.mk
--include libs/fatfs/doc/img/subdir_vars.mk
 -include subdir_rules.mk
 -include libs/jpegant/encoder/subdir_rules.mk
--include libs/jpegant/decoder/subdir_rules.mk
--include libs/fatfs/option/subdir_rules.mk
--include libs/fatfs/subdir_rules.mk
--include libs/fatfs/doc/img/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -147,7 +121,7 @@ all: bike_hud.out
 bike_hud.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"E:/Programs/TI/CCS/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --diag_warning=225 --display_error_number --diag_wrap=off -z --stack_size=0x800 -m"app_TM4C129XNCZAD_ccs.map" --heap_size=0x800 -i"E:/Programs/TI/CCS/ccsv5/tools/compiler/arm_5.0.4/lib" -i"E:/Programs/TI/CCS/ccsv5/tools/compiler/arm_5.0.4/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="bike_hud_linkInfo.xml" --rom_model -o "bike_hud.out" $(ORDERED_OBJS)
+	"E:/Programs/TI/CCS/ccsv5/tools/compiler/arm_5.0.4/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --define=PART_TM4C129XNCZAD --diag_warning=225 --display_error_number --diag_wrap=off -z --stack_size=0x800 -m"app_TM4C129XNCZAD_ccs.map" --heap_size=0x800 -i"E:/Programs/TI/CCS/ccsv5/tools/compiler/arm_5.0.4/lib" -i"E:/Programs/TI/CCS/ccsv5/tools/compiler/arm_5.0.4/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="bike_hud_linkInfo.xml" --rom_model -o "bike_hud.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
@@ -155,9 +129,8 @@ bike_hud.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(TMS470_EXECUTABLE_OUTPUTS__QUOTED) "bike_hud.out"
-	-$(RM) "libs\jpegant\encoder\main.pp" "libs\jpegant\decoder\main.pp" 
-	-$(RM) "main.pp" "startup_ccs.pp" "libs\jpegant\encoder\dct.pp" "libs\jpegant\encoder\jpegenc.pp" "libs\jpegant\decoder\idct.pp" "libs\jpegant\decoder\jpegdec.pp" "libs\fatfs\option\cc932.pp" "libs\fatfs\option\cc936.pp" "libs\fatfs\option\cc949.pp" "libs\fatfs\option\cc950.pp" "libs\fatfs\option\ccsbcs.pp" "libs\fatfs\option\syscall.pp" "libs\fatfs\option\unicode.pp" "libs\fatfs\diskio.pp" "libs\fatfs\ff.pp" "libs\fatfs\doc\img\app1.pp" "libs\fatfs\doc\img\app2.pp" "libs\fatfs\doc\img\app3.pp" "libs\fatfs\doc\img\app4.pp" 
-	-$(RM) "main.obj" "startup_ccs.obj" "libs\jpegant\encoder\dct.obj" "libs\jpegant\encoder\jpegenc.obj" "libs\jpegant\encoder\main.obj" "libs\jpegant\decoder\idct.obj" "libs\jpegant\decoder\jpegdec.obj" "libs\jpegant\decoder\main.obj" "libs\fatfs\option\cc932.obj" "libs\fatfs\option\cc936.obj" "libs\fatfs\option\cc949.obj" "libs\fatfs\option\cc950.obj" "libs\fatfs\option\ccsbcs.obj" "libs\fatfs\option\syscall.obj" "libs\fatfs\option\unicode.obj" "libs\fatfs\diskio.obj" "libs\fatfs\ff.obj" "libs\fatfs\doc\img\app1.obj" "libs\fatfs\doc\img\app2.obj" "libs\fatfs\doc\img\app3.obj" "libs\fatfs\doc\img\app4.obj" 
+	-$(RM) "main.pp" "startup_ccs.pp" "libs\jpegant\encoder\dct.pp" "libs\jpegant\encoder\jpegenc.pp" 
+	-$(RM) "main.obj" "startup_ccs.obj" "libs\jpegant\encoder\dct.obj" "libs\jpegant\encoder\jpegenc.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
