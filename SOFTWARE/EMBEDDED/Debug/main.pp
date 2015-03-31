@@ -15,9 +15,6 @@ main.obj: C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/rom.h
 main.obj: C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/pwm.h
 main.obj: C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/sysctl.h
 main.obj: C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/pin_map.h
-main.obj: C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/uart.h
-main.obj: C:/ti/TivaWare_C_Series-2.0.1.11577/utils/uartstdio.h
-main.obj: C:/ti/ccsv5/tools/compiler/arm_5.0.4/include/stdarg.h
 
 ../main.c: 
 C:/ti/ccsv5/tools/compiler/arm_5.0.4/include/stdbool.h: 
@@ -34,6 +31,3 @@ C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/rom.h:
 C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/pwm.h: 
 C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/sysctl.h: 
 C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/pin_map.h: 
-C:/ti/TivaWare_C_Series-2.0.1.11577/driverlib/uart.h: 
-C:/ti/TivaWare_C_Series-2.0.1.11577/utils/uartstdio.h: 
-C:/ti/ccsv5/tools/compiler/arm_5.0.4/include/stdarg.h: 
