@@ -1,3 +1,7 @@
 .DS_Store
 Thumbs.db
 *.mk
+
+# project
+SOFTWARE/EMBEDDED/Debug/
+SOFTWARE/EMBEDDED/.project
