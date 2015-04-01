@@ -84,6 +84,8 @@ SYSCTL_CFG_VCO_480),
 
 	while(1)
 	{								  //he : bi
+		UARTCharPut(UART7_BASE, (unsigned char)0);
+		UARTCharPut(UART7_BASE, (unsigned char)1);
 		UARTCharPut(UART7_BASE, 'H'); //48 : 0100
 		UARTCharPut(UART7_BASE, 'E'); //45 : 0100 0101
 		UARTCharPut(UART7_BASE, 'L'); //4C : 0100
@@ -95,5 +97,7 @@ SYSCTL_CFG_VCO_480),
 		UARTCharPut(UART7_BASE, 'U'); //55 : 0101 0101
 		UARTCharPut(UART7_BASE, 'D'); //44 : 0010
 		UARTCharPut(UART7_BASE, ' '); //20 : 0010 0000
+		UARTCharPut(UART7_BASE, (unsigned char)2);
+		UARTCharPut(UART7_BASE, (unsigned char)3);
 	}
 }
