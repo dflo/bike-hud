@@ -37,10 +37,7 @@ main(void)
 	//
 	// Run from the PLL at 120 MHz.
 	//
-	systemClockFreq = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL |
-
-SYSCTL_CFG_VCO_480),
-										  120000000);
+	systemClockFreq = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480), 120000000);
 
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM0);    //Enable control of PWM module 0
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7);
