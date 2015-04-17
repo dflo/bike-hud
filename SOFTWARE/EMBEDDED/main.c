@@ -9,7 +9,7 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/pin_map.h"
 
-#include "binclude/sdc_driver.h"
+#include "includes/sdc_driver.h"
 
 uint32_t g_ui32SysClock;
 
