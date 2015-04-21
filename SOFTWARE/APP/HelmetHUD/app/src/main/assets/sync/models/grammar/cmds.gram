@@ -1,0 +1,9 @@
+#JSGF V1.0;
+
+grammar cmds;
+
+public <cmds> = <keywords>;
+
+<keywords> = (answer the phone call | end the phone call);
+
+<garbage> = garbages;
