@@ -27,9 +27,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Info"
-        android:id="@+id/info_text"
-        android:layout_alignParentBottom="true"
+        android:text="Currently Not Updated"
+        android:id="@+id/speed_text"
+        android:layout_below="@+id/result_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp" />
+        android:layout_marginTop="69dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/info_text"
+        android:layout_below="@+id/speed_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
 </RelativeLayout>

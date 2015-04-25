@@ -43,13 +43,9 @@ import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -58,8 +54,6 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import edu.cmu.pocketsphinx.Assets;
 import edu.cmu.pocketsphinx.Hypothesis;
@@ -75,6 +69,9 @@ public class HelmetHUD extends Activity implements RecognitionListener {
     private static final String KEYPHRASE = "jarvis";
     private SpeechRecognizer recognizer;
     private HashMap<String, Integer> captions;
+    // Gps Speed
+    static TextView speedField;
+    protected static float speed = 0;
     // Bluetooth vars
     private static final int REQUEST_ENABLE_BT = 1;
     private BluetoothAdapter btAdapter = null;
@@ -90,10 +87,13 @@ public class HelmetHUD extends Activity implements RecognitionListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "...in onCreate...");
+        // VoiceRecog Vars
         captions = new HashMap<>();
         captions.put(KWS_SEARCH, R.string.kws_caption);
         captions.put(CMD_SEARCH, R.string.cmd_caption);
+        // Set view
         setContentView(R.layout.activity_helmet_hud);
+        // Update caption text
         ((TextView) findViewById(R.id.caption_text)).setText("Preparing the recognizer");
 
         // Recognizer init is time-consuming and involves IO
@@ -122,14 +122,19 @@ public class HelmetHUD extends Activity implements RecognitionListener {
                 }
             }
         }.execute();
-        // New async task to calculate speed
-//        calcSpeed task = new calcSpeed(this);
-//        task.execute();
+        // Run updateSpeed Service
+        speedField = (TextView) findViewById(R.id.speed_text);
+        startService(new Intent(this, UpdateSpeedService.class));
+        run();
         // Setup Bluetooth
         out = (TextView) findViewById(R.id.info_text);
-        out.setText("...In onCreate()...");
+        out.append("...In onCreate()...");
         btAdapter = BluetoothAdapter.getDefaultAdapter();
         CheckBTState();
+    }
+
+    static void run(){
+        speedField.setText("Current Speed (mph): " + String.valueOf(speed));
     }
 
     @Override
@@ -144,7 +149,7 @@ public class HelmetHUD extends Activity implements RecognitionListener {
             switchSearch(KWS_SEARCH);
         else
             ((TextView) findViewById(R.id.result_text)).setText(text);
-            makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+//            makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -202,64 +207,32 @@ public class HelmetHUD extends Activity implements RecognitionListener {
 //        recognizer.addNgramSearch(FORECAST_SEARCH, languageModel);
     }
 
-    private class calcSpeed extends AsyncTask<Void, Void, Void> /*Params, Progress, Results */ {
-        Context context;
-
-        calcSpeed(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            Log.i(TAG, "...in Background task \"calc speed\"...");
-            LocationManager locationManager = (LocationManager) context
-                    .getSystemService(Context.LOCATION_SERVICE);
-            // Define listener that responds to location updates
-            LocationListener locationListener = new LocationListener() {
-                public void onLocationChanged(Location location) {
-                    Log.i(TAG, "...in onLocationChanged...");
-                    location.getLatitude();
-                    float speed = (float)(location.getSpeed()*2.23694);
-//                    makeText(context, "Current speed: " + speed, Toast.LENGTH_LONG).show();
-                    TextView speed_text = (TextView)findViewById(R.id.speed_text);
-                    speed_text.setText("Current speed: " + speed);
-                }
-                public void onStatusChanged(String provider, int status, Bundle extras) {
-                }
-                public void onProviderEnabled(String provider) {
-                }
-                public void onProviderDisabled(String provider) {
-                }
-            };
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-            return null;
-        }
-    }
-
     @Override
     public void onStart() {
         super.onStart();
-        out.setText("...In onCreate()...");
+        out.append("...In onCreate()...");
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        out.setText("...In onResume()...\n...Attempting client connect...");
-        //
+
+    public void btEstablishConnection() {
+        out.append("...In onResume()...\n...Attempting client connect...");
+        // Set up a pointer to the remote node using it's address.
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
-        //
+        // Two things are need to make a connection:
+        //  A MAC address, which we got above.
+        //  A Service ID or UUID. In this case we are using the UUID for SPP.
         try {
             btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
         } catch (IOException e) {
             AlertBox("Fatal Error", "In onResume() and socket create failed: " + e.getMessage() + ".");
         }
-        //
+        // Discovery is resource intensive. Make sure it isn't going on
+        // when you attempt to connect and pass your message.
         btAdapter.cancelDiscovery();
-        //
+        // Establish the connection. This will block until it connects.
         try {
             btSocket.connect();
-            out.setText("...Connection established and data link opened...");
+            out.append("...Connection established and data link opened...");
         } catch (IOException e) {
             try {
                 btSocket.close();
@@ -267,31 +240,32 @@ public class HelmetHUD extends Activity implements RecognitionListener {
                 AlertBox("Fatal Error", "In onResume() and unable to close socket during connection failure" + e2.getMessage() + ".");
             }
         }
-        //
-        out.setText("...Sending message to server...");
+        out.append("...In onResume()...\n...Connection was made...");
+    }
+
+    public void btSendMessage(String msg) {
+        out.append("...Sending message to server...");
         try {
             outStream = btSocket.getOutputStream();
         } catch (IOException e) {
             AlertBox("Fatal Error", "In onResume and output stream creation failed:" + e.getMessage() + ".");
         }
-
+        msg = "hello";
         String message = "Hello from HelmetHUD App.\n";
         byte[] msgBuffer = message.getBytes();
         try {
             outStream.write(msgBuffer);
         } catch (IOException e) {
-            String msg = "In onResume() and an exception occurred during write: " + e.getMessage();
+            String eMsg = "In onResume() and an exception occurred during write: " + e.getMessage();
             if (address.equals("00:00:00:00:00:00"))
-                msg = msg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 37 in the java code";
-            msg = msg + ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
-            AlertBox("Fatal Error", msg);
+                eMsg = eMsg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 37 in the java code";
+            eMsg = eMsg + ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
+            AlertBox("Fatal Error", eMsg);
         }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        out.setText("...In onPause()...");
+    public void btPause() {
+        // flush stream
         if(outStream != null) {
             try {
                 outStream.flush();
@@ -299,7 +273,7 @@ public class HelmetHUD extends Activity implements RecognitionListener {
                 AlertBox("Fatal Error", "In onPause() and failed to flush output stream: " + e.getMessage() + ".");
             }
         }
-
+        // Close socket
         try {
             btSocket.close();
         } catch (IOException e2) {
@@ -308,15 +282,26 @@ public class HelmetHUD extends Activity implements RecognitionListener {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        out.append("...In onPause()...");
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
-        out.setText("...In onStop()...");
+        out.append("...In onStop()...");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        out.setText("...In onDestroy()...");
+        out.append("...In onDestroy()...");
     }
 
     private void CheckBTState() {
@@ -324,7 +309,7 @@ public class HelmetHUD extends Activity implements RecognitionListener {
             AlertBox("Fatal Error", "Bluetooth Not supported. Aborting.");
         } else {
             if(btAdapter.isEnabled()){
-                out.setText("...In onCreate()...");
+                out.append("...In onCreate()...");
             } else {
                 Intent enableBtIntent = new Intent(btAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);

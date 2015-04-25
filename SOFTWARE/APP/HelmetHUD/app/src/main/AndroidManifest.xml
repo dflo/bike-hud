@@ -35,6 +35,7 @@
         </activity>
 
         <service android:name=".RecognitionService"/>
+        <service android:name=".UpdateSpeedService"/>
     </application>
 
 </manifest>
