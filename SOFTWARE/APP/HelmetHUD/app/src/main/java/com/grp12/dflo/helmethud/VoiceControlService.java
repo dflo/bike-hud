@@ -1,11 +1,13 @@
 package com.grp12.dflo.helmethud;
 
+import static android.widget.Toast.makeText;
 import static edu.cmu.pocketsphinx.SpeechRecognizerSetup.defaultSetup;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -79,23 +81,40 @@ public class VoiceControlService extends IntentService implements RecognitionLis
     }
 
     @Override
-    public void onBeginningOfSpeech() {
-
-    }
-
-    @Override
-    public void onEndOfSpeech() {
-
-    }
-
-    @Override
     public void onPartialResult(Hypothesis hypothesis) {
-
+        Log.i(TAG, "...in onPartialResult...");
+        String text = hypothesis.getHypstr();
+        if (text.equals(KEYPHRASE))
+            switchSearch(CMD_SEARCH);
+        else if (text.equals("answer"))
+            switchSearch(KWS_SEARCH);
+        else if (text.equals("ignore"))
+            switchSearch(KWS_SEARCH);
+        else
+//            ((TextView) findViewById(R.id.result_text)).setText(text);
+            makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResult(Hypothesis hypothesis) {
+        Log.i(TAG, "...in onResult...");
+//        ((TextView) findViewById(R.id.result_text)).setText("");
+        if (hypothesis != null) {
+            String text = hypothesis.getHypstr();
+            makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    @Override
+    public void onBeginningOfSpeech() {
+        Log.i(TAG, "...in onBeginningOfSpeech...");
+    }
+
+    @Override
+    public void onEndOfSpeech() {
+        Log.i(TAG, "...in onEndOfSpeech...");
+//        if (CMD_SEARCH.equals(recognizer.getSearchName()))
+//            switchSearch(KWS_SEARCH);
     }
 
     private void switchSearch(String searchName) {

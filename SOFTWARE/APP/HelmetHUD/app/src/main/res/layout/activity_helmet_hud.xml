@@ -13,7 +13,7 @@
         android:id="@+id/caption_text"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp" />
+        android:layout_marginTop="94dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,4 +41,23 @@
         android:layout_below="@+id/speed_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Temp"
+        android:id="@+id/temp_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Condition Description"
+        android:id="@+id/cond_text"
+        android:layout_below="@+id/temp_text"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

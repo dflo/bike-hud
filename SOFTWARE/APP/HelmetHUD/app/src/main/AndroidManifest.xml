@@ -36,6 +36,7 @@
 
         <service android:name=".RecognitionService"/>
         <service android:name=".UpdateSpeedService"/>
+        <service android:name=".TimedService"/>
     </application>
 
 </manifest>
