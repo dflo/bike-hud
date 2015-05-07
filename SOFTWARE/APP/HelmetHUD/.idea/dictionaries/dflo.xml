@@ -2,6 +2,9 @@
   <dictionary name="dflo">
     <words>
       <w>cmds</w>
+      <w>cond</w>
+      <w>descr</w>
+      <w>prox</w>
     </words>
   </dictionary>
 </component>

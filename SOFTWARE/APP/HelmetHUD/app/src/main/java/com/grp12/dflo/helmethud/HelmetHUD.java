@@ -30,53 +30,106 @@
 
 package com.grp12.dflo.helmethud;
 
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Activity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class HelmetHUD extends Activity {
     // Local vars
+    private Context context;
+    public static LocalBroadcastManager mBroadcaster;
     // Debug
     private static final String TAG = "debug";
     private static TextView out;
     // Gps Speed
-    static TextView speedField;
-    private Intent intentUpdateSpeed;
+    private static TextView speedField;
+    private Intent intentLocation;
     protected static float speed = 0;
     // Weather
     protected static float lat;
     protected static float lon;
     protected static float temp;
     protected static String condDescr;
-    static TextView tempField;
-    static TextView condField;
+    private static TextView tempField;
+    private static TextView condField;
     // Timed Events
     private Intent intentTimed;
+    // Navigation
+    private BroadcastReceiver navRequestReceiver;
+    private EditText destinationField;
+    private Button sendButton;
+    protected static String destination;
+    private static final String NAV_REQUEST = "navigation";
+    // Bluetooth
+    private Intent intentBluetooth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Set view
         setContentView(R.layout.activity_helmet_hud);
+        context = this;
+        mBroadcaster = LocalBroadcastManager.getInstance(this);
         Log.i(TAG, "...in onCreate...");
         out = (TextView) findViewById(R.id.info_text);
         out.append("...In onCreate()...");
-        // Run updateSpeed Service
+        // setup ui stuff
         speedField = (TextView) findViewById(R.id.speed_text);
-        intentUpdateSpeed = new Intent(this, UpdateSpeedService.class);
-        startService(intentUpdateSpeed);
-        // Start TimedService
         tempField = (TextView) findViewById(R.id.temp_text);
         condField = (TextView) findViewById(R.id.cond_text);
-        intentTimed = new Intent(this, TimedService.class);
-        startService(intentTimed);
+        destinationField = (EditText) findViewById(R.id.edit_text_destination);
+        sendButton = (Button) findViewById(R.id.send_button);
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                // Start BluetoothService
+                intentBluetooth = new Intent(context, BluetoothService.class);
+                startService(intentBluetooth);
+                // Run Location Service
+                intentLocation = new Intent(context, LocationService.class);
+                startService(intentLocation);
+                // Start TimedService
+                intentTimed = new Intent(context, TimedService.class);
+                startService(intentTimed);
+                return null;
+            }
+        }.execute();
+        // Navigation setup
+        IntentFilter filter = new IntentFilter(NAV_REQUEST);
+        navRequestReceiver = new NavigationRequestReceiver();
+        mBroadcaster.registerReceiver(navRequestReceiver, filter);
+        // Button
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                destination = destinationField.getText().toString();
+                Log.d(TAG, "...onClick in destinationField got: " + destination);
+                destinationField.setEnabled(false);
+                destinationField.setEnabled(true);
+                // fire new intent to NavigationRequest
+                Intent intent = new Intent(NAV_REQUEST);
+                intent.putExtra("dest", destination);
+                mBroadcaster.sendBroadcast(intent);
+                Log.d("sender", "sending dest: " + destination);
+            }
+        });
     }
 
-    static void run(){
+    static void updateTextViews(){
         Log.i(TAG, "...updating speed...");
         speedField.setText("Current Speed (mph): " + String.valueOf(speed));
         tempField.setText(Float.toString(temp));
@@ -114,8 +167,21 @@ public class HelmetHUD extends Activity {
         super.onDestroy();
         Log.i(TAG, "...In onDestroy()...");
         out.append("...In onDestroy()...");
-        stopService(intentUpdateSpeed);
         stopService(intentTimed);
+        stopService(intentLocation);
+        mBroadcaster.unregisterReceiver(navRequestReceiver);
+        stopService(intentBluetooth);
+    }
+
+    public void AlertBox(String title, String message){
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message + "Press OK to exit.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
+                    }
+                }).show();
     }
 
     @Override

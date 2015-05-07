@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
     <application
@@ -34,9 +34,17 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".RecognitionService"/>
-        <service android:name=".UpdateSpeedService"/>
-        <service android:name=".TimedService"/>
+        <service android:name=".RecognitionService" />
+        <service android:name=".BluetoothService" />
+        <service android:name=".LocationService" />
+        <service android:name=".TimedService" />
+        <service android:name=".NotificationService"
+            android:label="HelmetHUD"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

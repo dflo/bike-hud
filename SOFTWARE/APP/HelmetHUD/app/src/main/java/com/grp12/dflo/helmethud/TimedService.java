@@ -21,9 +21,10 @@ import java.util.concurrent.ExecutionException;
 public class TimedService extends Service {
     // Constants
     private static final String TAG = "debug";
-    public static final long WEATHER_NOTIFY_INTERVAL = 10 * 1000; // 10 seconds
+    public static final long WEATHER_NOTIFY_INTERVAL = 5 * 60 * 1000; // 5 minutes
+    private static final String BLUETOOTH_ALERT = "BluetoothAlert";
 
-    // run on another Thread
+    // updateTextViews on another Thread
     private Handler mHandler = new Handler();
     // timer handling
     private Timer mTimer = null;
@@ -51,7 +52,7 @@ public class TimedService extends Service {
     class WeatherTimerTask extends TimerTask {
         @Override
         public void run() {
-            // run on another thread
+            // updateTextViews on another thread
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -62,8 +63,8 @@ public class TimedService extends Service {
                     Weather weather = new Weather();
                     String data = null;
                     try {
-                        data = new WeatherHttpClient()
-                                .execute()
+                        data = new HttpRequestClient()
+                                .execute("weather")
                                 .get();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -84,6 +85,11 @@ public class TimedService extends Service {
                     HelmetHUD.temp = Math.round((weather.temperature.getTemp()));
                     HelmetHUD.condDescr = weather.currentCondition.getCondition() + weather.currentCondition.getDescr();
                     // send via bluetooth every 10 minutes.
+                    // Bluetooth here
+                    Intent weatherIntent = new Intent(BLUETOOTH_ALERT);
+                    weatherIntent.putExtra("message", HelmetHUD.temp + " " + HelmetHUD.condDescr);
+                    HelmetHUD.mBroadcaster.sendBroadcast(weatherIntent);
+                    Log.d("LocationService", "sending bt msg with weather");
                 }
             });
         }
@@ -92,6 +98,7 @@ public class TimedService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mTimer.cancel();
         Log.i(TAG, "...in onDestroy in TimedService...");
         Toast.makeText(this, "TimedService done", Toast.LENGTH_SHORT).show();
     }
