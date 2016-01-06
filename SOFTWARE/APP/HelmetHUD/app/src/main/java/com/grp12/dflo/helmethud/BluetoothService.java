@@ -33,6 +33,7 @@ public class BluetoothService extends Service {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static String address = "00:06:66:52:CB:AF";
     private static final String BLUETOOTH_ALERT = "BluetoothAlert";
+    private byte[] speedBuffer;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -104,7 +105,13 @@ public class BluetoothService extends Service {
             Log.d("Fatal Error", "In onResume and output stream creation failed:" + e.getMessage() + ".");
         }
         // send message as bytes
-        byte[] msgBuffer = message.getBytes();
+        byte[] msgBuffer;
+        if (message.equals("speed")) {
+            msgBuffer = speedBuffer;
+        } else {
+            msgBuffer = message.getBytes();
+        }
+        HelmetHUD.out.setText("message: " + message);
         try {
             outStream.write(msgBuffer);
         } catch (IOException e) {
@@ -138,6 +145,37 @@ public class BluetoothService extends Service {
             // do stuff here
             Bundle extras = intent.getExtras();
             String message = extras.getString("message");
+            if (message.equals("speed")) {
+                Float lat = extras.getFloat("lat");
+                Float lon = extras.getFloat("lon");
+                Float diff = extras.getFloat("diff");
+                // magic stuff
+                String stuff = "[]";
+                char[] charArray = stuff.toCharArray();
+                int latBits = Float.floatToIntBits(lat);
+                int lonBits = Float.floatToIntBits(lon);
+                int diffBits = Float.floatToIntBits(diff);
+                speedBuffer = new byte[14];
+                // start char "["
+                speedBuffer[0] = (byte) charArray[0];
+                // add lat
+                speedBuffer[1] = (byte)((latBits >> 24) & 0xff);
+                speedBuffer[2] = (byte)((latBits >> 16) & 0xff);
+                speedBuffer[3] = (byte)((latBits >> 8) & 0xff);
+                speedBuffer[4] = (byte)(latBits & 0xff);
+                // add lon
+                speedBuffer[5] = (byte)((lonBits >> 24) & 0xff);
+                speedBuffer[6] = (byte)((lonBits >> 16) & 0xff);
+                speedBuffer[7] = (byte)((lonBits >> 8) & 0xff);
+                speedBuffer[8] = (byte)(lonBits & 0xff);
+                // add diff
+                speedBuffer[9] = (byte)((diffBits >> 24) & 0xff);
+                speedBuffer[10] = (byte)((diffBits >> 16) & 0xff);
+                speedBuffer[11] = (byte)((diffBits >> 8) & 0xff);
+                speedBuffer[12] = (byte)(diffBits & 0xff);
+                // end char "]"
+                speedBuffer[13] = (byte) charArray[1];
+            }
             Log.d(BT_TAG, "Bluetooth: message received: " + message);
             // send message request
             btSendMessage(message);

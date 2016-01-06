@@ -40,6 +40,9 @@ public class LocationService extends Service {
     protected static Step[] steps;
     protected static int numberOfSteps;
     protected static int stepIndex;
+    private float prevTime;
+    private float currTime;
+    private double diff;
 
 
     @Override
@@ -51,6 +54,8 @@ public class LocationService extends Service {
     public void onCreate() {
         Log.i(TAG, "...in onCreate in LocationService...");
         super.onCreate();
+        prevTime = System.nanoTime();
+        currTime = System.nanoTime();
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         criteria.setSpeedRequired(true);
@@ -109,10 +114,16 @@ public class LocationService extends Service {
             HelmetHUD.lat = (float)(location.getLatitude());
             HelmetHUD.lon = (float)(location.getLongitude());
             HelmetHUD.updateTextViews();
+            prevTime = currTime;
+            currTime = System.nanoTime();
+            diff = (currTime - prevTime) / 1e9;
+
             // Bluetooth here
-            String speed = String.valueOf((float)(location.getSpeed()*2.23694));
             Intent speedIntent = new Intent(BLUETOOTH_ALERT);
-            speedIntent.putExtra("message", speed + " MPH");
+            speedIntent.putExtra("message", "speed");
+            speedIntent.putExtra("lat", HelmetHUD.lat);
+            speedIntent.putExtra("lon", HelmetHUD.lon);
+            speedIntent.putExtra("diff", diff);
             HelmetHUD.mBroadcaster.sendBroadcast(speedIntent);
             Log.d("LocationService", "sending bt msg with speed");
         }

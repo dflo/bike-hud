@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 public class TimedService extends Service {
     // Constants
     private static final String TAG = "debug";
-    public static final long WEATHER_NOTIFY_INTERVAL = 5 * 60 * 1000; // 5 minutes
+    public static final long WEATHER_NOTIFY_INTERVAL = 25 * 1000; // 25 seconds
     private static final String BLUETOOTH_ALERT = "BluetoothAlert";
 
     // updateTextViews on another Thread
@@ -87,7 +87,14 @@ public class TimedService extends Service {
                     // send via bluetooth every 10 minutes.
                     // Bluetooth here
                     Intent weatherIntent = new Intent(BLUETOOTH_ALERT);
-                    weatherIntent.putExtra("message", HelmetHUD.temp + " " + HelmetHUD.condDescr);
+                    String message = HelmetHUD.temp + " " + HelmetHUD.condDescr;
+                    String msg;
+                    if (message.length() > 25) {
+                        msg = message.substring(0, 24);
+                    } else {
+                        msg = message;
+                    }
+                    weatherIntent.putExtra("message", "<" + msg + ">");
                     HelmetHUD.mBroadcaster.sendBroadcast(weatherIntent);
                     Log.d("LocationService", "sending bt msg with weather");
                 }

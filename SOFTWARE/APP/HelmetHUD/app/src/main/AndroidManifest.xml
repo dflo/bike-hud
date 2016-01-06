@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".RecognitionService" />
+        <!--<service android:name=".RecognitionService" />-->
         <service android:name=".BluetoothService" />
         <service android:name=".LocationService" />
         <service android:name=".TimedService" />

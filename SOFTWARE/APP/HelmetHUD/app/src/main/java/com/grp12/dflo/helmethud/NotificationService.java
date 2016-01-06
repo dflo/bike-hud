@@ -34,7 +34,14 @@ public class NotificationService extends NotificationListenerService {
         Log.i(TAG, "Text: " + text);
         // Bluetooth here
         Intent notificationIntent = new Intent(BLUETOOTH_ALERT);
-        notificationIntent.putExtra("message", title + text);
+        String message = title + " " + text;
+        String msg;
+        if (message.length() > 25) {
+            msg = message.substring(0, 24);
+        } else {
+            msg = message;
+        }
+        notificationIntent.putExtra("message", "(" + msg + ")");
         HelmetHUD.mBroadcaster.sendBroadcast(notificationIntent);
         Log.d("LocationService", "sending bt msg with notification");
     }

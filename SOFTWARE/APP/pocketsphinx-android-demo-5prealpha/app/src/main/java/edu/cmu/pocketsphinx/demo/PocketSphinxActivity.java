@@ -46,8 +46,6 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import edu.cmu.pocketsphinx.Assets;
 import edu.cmu.pocketsphinx.Hypothesis;
 import edu.cmu.pocketsphinx.RecognitionListener;
@@ -143,11 +141,8 @@ public class PocketSphinxActivity extends Activity implements
     	    return;
 
         String text = hypothesis.getHypstr();
-//        debugField.setText("text: " + text + " value: " + text.equals(ANSWER_CALL));
         if (text.equals(KEYPHRASE))
             switchSearch(CMD_SEARCH);
-        else if (text.equals(ANSWER_CALL))
-            answerCall();
         else if (text.equals(DIGITS_SEARCH))
             switchSearch(DIGITS_SEARCH);
         else if (text.equals(PHONE_SEARCH))
@@ -166,7 +161,6 @@ public class PocketSphinxActivity extends Activity implements
         ((TextView) findViewById(R.id.result_text)).setText("");
         if (hypothesis != null) {
             String text = hypothesis.getHypstr();
-//            debugField.setText("text: " + text + " value: " + text.equals(ANSWER_CALL));
             makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
             if (text.equals(ANSWER_CALL))
                 answerCall();
@@ -200,9 +194,7 @@ public class PocketSphinxActivity extends Activity implements
     }
 
     private void answerCall() {
-        debugField.setText("...got an answer call click...\n");
         try {
-            debugField.append("...trying magic...\n");
             Runtime.getRuntime().exec("input keyevent " +
                     Integer.toString(KeyEvent.KEYCODE_HEADSETHOOK));
         } catch (IOException e) {
@@ -214,7 +206,6 @@ public class PocketSphinxActivity extends Activity implements
             Intent btnUp = new Intent(Intent.ACTION_MEDIA_BUTTON).putExtra(
                     Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP,
                             KeyEvent.KEYCODE_HEADSETHOOK));
-            debugField.append("...trying other magic...\n");
             mContext.sendOrderedBroadcast(btnDown, enforcedPerm);
             mContext.sendOrderedBroadcast(btnUp, enforcedPerm);
         }

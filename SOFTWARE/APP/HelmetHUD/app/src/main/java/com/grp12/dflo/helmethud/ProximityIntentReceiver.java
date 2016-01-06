@@ -34,18 +34,24 @@ public class ProximityIntentReceiver extends BroadcastReceiver {
             Log.d(getClass().getSimpleName(), "exiting");
             Log.d(getClass().getSimpleName(), "why is this happening? lat: " + HelmetHUD.lat + " lon: " + HelmetHUD.lon);
             if (LocationService.stepIndex < LocationService.numberOfSteps) {
-                // show next msg
+//                 show next msg
                 String message = LocationService.steps[LocationService.stepIndex].getInstructions();
                 message = message.replaceAll("\\<((\\/?b)|(\\/div|div.*\"))\\>", "");
                 // Bluetooth here
                 Intent navigationIntent = new Intent(BLUETOOTH_ALERT);
-                navigationIntent.putExtra("message", message);
+                String msg;
+                if (message.length() > 25) {
+                    msg = message.substring(0, 24);
+                } else {
+                    msg = message;
+                }
+                navigationIntent.putExtra("message", "{" + msg+ "}");
                 HelmetHUD.mBroadcaster.sendBroadcast(navigationIntent);
                 Log.d("LocationService", "sending bt msg with navigation info:" + message);
                 // add next prox alert
-                Intent locIntent = new Intent(NEXT_STEP_ALERT);
-                HelmetHUD.mBroadcaster.sendBroadcast(locIntent);
-                Log.d("ProxRcvr", "sending reqest for next step");
+//                Intent locIntent = new Intent(NEXT_STEP_ALERT);
+//                HelmetHUD.mBroadcaster.sendBroadcast(locIntent);
+//                Log.d("ProxRcvr", "sending reqest for next step");
             }
         }
     }
